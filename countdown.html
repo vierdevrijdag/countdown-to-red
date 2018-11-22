@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <title>Countdown - Vierde vrijdag</title>
+
+  <style type="text/css">
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+  body {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #body {
+    transition: background 2s;
+  }
+  #countdown {
+    color: #eee;
+    border: none;
+    width: auto;
+    font-size: 20em;
+    text-align: center;
+    background: transparent;
+    transition: color 2s;
+  }
+  </style>
+
+</head>
+<body id="body">
+
+<input id="countdown" value="120" />
+
+<script type="text/javascript">
+let start = 120, end = 0;
+let counter = document.getElementById('countdown');
+let body = document.getElementById('body');
+
+let interval = setInterval(function() {
+  counter.value -= 1;
+  // Set counter color
+  if(counter.value >= start/2) {
+    counter.style.color = '#eee'
+  } else {
+    counter.style.color = '#000'
+  }
+  // Set background color
+  if(counter.value < start/4 && counter.value >= 10) {
+    body.style.background = '#ccc';
+  }
+  else if(counter.value < 10) {
+    body.style.background = '#f00';
+  }
+  // On zero: Clear interval
+  if(counter.value == 0) {
+    clearInterval(interval);
+  }
+}, 100);
+
+</script>
+
+</body>
+</html>
